@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start showWhen="ios">
+      <button ion-button (click)="abort()">
+        Abbrechen
+      </button>
+    </ion-buttons>
+    <ion-title>Beschriften</ion-title>
+    <ion-buttons end>
+      <button ion-button strong (click)="submit()">
+        Absenden
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="http://placegoat.com/400/400">
+    <ion-card-content>
+      <ion-input type="text" placeholder="Title"></ion-input>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
