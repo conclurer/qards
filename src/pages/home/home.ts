@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SubmitPage } from '../submit/submit';
+import { ShowcasePage } from '../showcase/showcase';
 
 @Component({
   selector: 'page-home',
@@ -11,5 +12,9 @@ export class HomePage {
 
   createCard() {
     this.modalCtrl.create(SubmitPage).present()
+  }
+
+  showCard() {
+    this.modalCtrl.create(ShowcasePage).present()
   }
 }
