@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SubmitPage } from '../pages/submit/submit';
 import { ShowcasePage } from '../pages/showcase/showcase';
+import { Camera } from '@ionic-native/camera'
 
 /**
  * - Karte größer
@@ -28,6 +29,7 @@ import { ShowcasePage } from '../pages/showcase/showcase';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

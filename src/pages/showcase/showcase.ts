@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
-import { ViewController, Card, NavParams } from "ionic-angular";
+import { ViewController, NavParams } from "ionic-angular";
+import { Card } from "../../data/qard";
 
 @Component({
   templateUrl: 'showcase.html'

@@ -4,19 +4,19 @@
     <ion-card-content>
       <ion-row>
         <ion-col col-10>
-          <h1>GoatyMcGoatface</h1>
+          <h1>{{card.title}}</h1>
         </ion-col>
         <ion-col col-2 center text-right>
-          <ion-badge item-end>260k</ion-badge>
+          <ion-badge item-end>{{card.score}}</ion-badge>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-10>
-          <p>Heidenheim an der Brenz</p>
+          <p>Heidenheim an der Brenz</p><!-- TODO -->
         </ion-col>
         <ion-col col-2 text-right>
           <ion-note>
-            #1234
+            #{{card.serial}}
           </ion-note>
         </ion-col>
       </ion-row>
