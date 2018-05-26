@@ -11,9 +11,10 @@ import { Camera, PictureSourceType } from '@ionic-native/camera';
 })
 export class HomePage {
   public collection: Card[] = [
-    mockedCard('Ghoast', 277),
-    mockedCard('Recep', 5),
-    mockedCard('Goathic', 99)
+    mockedCard('Ghoast', 277, 'http://placegoat.com/400/400'),
+    // mockedCard('Recep', 5, 'http://sheenholders.com/400x400'), TODO:remake
+    mockedCard('Goathic', 99, 'http://placekitten.com/400/400'),
+    // mockedCard('Goahog', 9000 + 1, 'http://placedog.com/400/400'), TODO:buy and remake
   ];
 
   constructor(

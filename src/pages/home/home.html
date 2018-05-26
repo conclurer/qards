@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col col-6 *ngFor="let card of collection">
         <ion-card>
-          <img (click)="showCard(card)" src="http://placegoat.com/250/250">
+          <img (click)="showCard(card)" [src]="card.imageUrl">
         </ion-card>
       </ion-col>
     </ion-row>
