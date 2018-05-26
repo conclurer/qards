@@ -5,7 +5,7 @@ export interface Card {
   holderId: string | null;
   imageId: string;
   imageUrl: string;
-  location: { lat: number; lng: number }; // Reverse geo
+  location: { _lat: number; _long: number }; // Reverse geo
   tags: { tag: string; score: number }[];
   title: string;
 

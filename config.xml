@@ -89,5 +89,8 @@
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
     </plugin>
     <allow-navigation href="http://192.168.178.40:8100" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="We want your location! Best regards NSA 😱" />
+    </plugin>
     <engine name="ios" spec="^4.5.4" />
 </widget>

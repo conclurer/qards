@@ -1,27 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
 import { SubmitPage } from '../submit/submit';
 import { ShowcasePage } from '../showcase/showcase';
 import { Card, mockedCard } from '../../data/qard';
 import { Camera, PictureSourceType } from '@ionic-native/camera';
+import { QardsDatabase } from 'qards-lib';
+import { SessionService } from '../../data/session';
+import firebase from 'firebase'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  public collection: Card[] = [
-    mockedCard('Ghoast', 277, 'http://placegoat.com/400/400'),
-    // mockedCard('Recep', 5, 'http://sheenholders.com/400x400'), TODO:remake
-    mockedCard('Goathic', 99, 'http://placekitten.com/400/400'),
-    // mockedCard('Goahog', 9000 + 1, 'http://placedog.com/400/400'), TODO:buy and remake
-  ];
+  public collection: Card[] | null = null;
 
   constructor(
     public navCtrl: NavController,
     private readonly modalCtrl: ModalController,
-    private readonly camera: Camera
-  ) {}
+    private readonly camera: Camera,
+    private readonly database: QardsDatabase,
+    private readonly session: SessionService,
+    private readonly changeDetection: ChangeDetectorRef
+  ) { }
+
+  ionViewWillEnter() {
+    this.database.getOwnCards(this.session.uid$.value)
+      .then((cards: firebase.firestore.QuerySnapshot) => {
+        this.collection = cards.docs.map(doc => doc.data() as Card)
+        this.changeDetection.markForCheck();
+      })
+  }
 
   async createCard() {
     try {

@@ -17,7 +17,7 @@ export class ShowcasePage {
     navParams: NavParams
   ) {
     this.card = navParams.get('card');
-    this.geocoder.reverseGeocode(this.card.location.lat, this.card.location.lng)
+    this.geocoder.reverseGeocode(this.card.location._lat, this.card.location._long)
       .then(results => {
         const result = results[0];
         if (result) {

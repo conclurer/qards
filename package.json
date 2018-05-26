@@ -26,21 +26,23 @@
     "@ionic-native/native-geocoder": "^4.7.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
+    "@ionic-native/geolocation": "4.7.0",
     "@ionic/storage": "2.1.3",
     "cordova-ios": "^4.5.4",
     "cordova-plugin-add-swift-support": "^1.7.1",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-nativegeocoder": "^3.1.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
-    "qards-lib": "file://../qards-lib",
     "firebase": "^5.0.4",
     "ionic-angular": "3.9.2",
     "ionic-swipe-all": "^1.2.0",
     "ionicons": "3.0.0",
+    "qards-lib": "file://../qards-lib",
     "rxjs": "5.5.10",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"
@@ -60,6 +62,9 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-nativegeocoder": {
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service"
+      },
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "We want your location! Best regards NSA 😱"
       }
     },
     "platforms": [
