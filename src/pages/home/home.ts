@@ -25,7 +25,7 @@ export class HomePage {
 
   async createCard() {
     try {
-      const imageData = this.camera.getPicture({
+      const image = await this.camera.getPicture({
         quality: 100,
         destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
@@ -34,7 +34,6 @@ export class HomePage {
         allowEdit: false,
         correctOrientation: true
       });
-      const image = 'data:image/jpeg;base64,' + imageData;
       this.modalCtrl.create(SubmitPage, { image }).present();
     } catch (error) {
       this.modalCtrl.create(SubmitPage).present();

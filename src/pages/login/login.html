@@ -1,5 +1,16 @@
-<ion-content>
-  <ion-input type="text" placeholder="Email" (change)="didChangeUser($event.target.value)"></ion-input>
-  <ion-input type="password" placeholder="Password" (change)="didChangePassword($event.target.value)"></ion-input>
-  <button ion-button (click)="login()">Login</button>
+<ion-content padding-top>
+  <ion-list>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" placeholder="Email" (change)="didChangeUser($event.target.value)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" placeholder="Password" (change)="didChangePassword($event.target.value)"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button (click)="login()">Login</button>
+  </div>
 </ion-content>

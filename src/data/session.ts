@@ -13,6 +13,7 @@ export class SessionService {
 
   public async login(user: string, password: string) {
     const somewhat = await this.authentication.login(user, password)
+    console.log(somewhat)
     this.uid$.next(somewhat.user.uid)
   }
 }

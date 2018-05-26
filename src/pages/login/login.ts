@@ -5,8 +5,8 @@ import { SessionService } from '../../data/session';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  public user = '';
-  public password = '';
+  public user = 'florian.hafner@conclurer.com';
+  public password = 'abc123';
 
   constructor(private readonly session: SessionService) {}
 
