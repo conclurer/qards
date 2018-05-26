@@ -11,9 +11,20 @@ export class SessionService {
     this.authentication = new Authentication(qards);
   }
 
-  public async login(user: string, password: string) {
-    const somewhat = await this.authentication.login(user, password)
+  public async register(user: string, password: string) {
+    const somewhat = await this.authentication.register(user, password)
     console.log(somewhat)
+    this.uid$.next(somewhat.user.uid)
+  }
+
+  public async login(user: string, password: string) {
+    let somewhat: any
+    try {
+      somewhat = await this.authentication.login(user, password)
+      console.log(somewhat)
+    } catch (error) {
+      somewhat = await this.authentication.register(user, password)
+    }
     this.uid$.next(somewhat.user.uid)
   }
 }

@@ -93,4 +93,5 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="We want your location! Best regards NSA 😱" />
     </plugin>
     <engine name="ios" spec="^4.5.4" />
+    <engine name="android" spec="7.0.0" />
 </widget>
