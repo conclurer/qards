@@ -1,18 +1,5 @@
-export interface Card {
-  comments: { comment: string; userId: string }[];
-  creatorId: string;
-  holderHistory: string[]; // user id
-  holderId: string | null;
-  imageId: string;
-  imageUrl: string;
-  location: { _lat: number; _long: number }; // Reverse geo
-  tags: { tag: string; score: number }[];
-  title: string;
-
-  // ours
-  score: number;
-  serial: number;
-}
+import { Card } from 'qards-lib'
+export { Card } from 'qards-lib'
 
 let serial = 1;
 export function mockedCard(title: string, score: number, imageUrl: string): Card {

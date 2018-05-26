@@ -15,8 +15,8 @@
           <p>{{location}}</p>
         </ion-col>
         <ion-col col-2 text-right>
-          <ion-note>
-            #{{card.serial}}
+          <ion-note *ngIf="card['serial']; let serial">
+            #{{serial}}
           </ion-note>
         </ion-col>
       </ion-row>

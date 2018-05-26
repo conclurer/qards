@@ -1,5 +1,5 @@
 import 'firebase/storage';
-//import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -27,6 +27,14 @@ import { SessionService } from '../data/session';
  * - Nö
  */
 
+export const config = qards;
+export function database() {
+  return new QardsDatabase(config)
+}
+export function storage() {
+  return new QardsStorage(config)
+}
+
 @NgModule({
   declarations: [MyApp, HomePage, SubmitPage, ShowcasePage, LoginPage],
   imports: [BrowserModule, IonicModule.forRoot(MyApp), IonicSwipeAllModule],
@@ -38,10 +46,10 @@ import { SessionService } from '../data/session';
     Camera,
     NativeGeocoder,
     SessionService,
-    // Geolocation,
+    Geolocation,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    { provide: QardsDatabase, useFactory: () => new QardsDatabase(qards) },
-    { provide: QardsStorage, useFactory: () => new QardsStorage(qards) }
+    { provide: QardsDatabase, useFactory: database },
+    { provide: QardsStorage, useFactory: storage }
   ]
 })
 export class AppModule {}

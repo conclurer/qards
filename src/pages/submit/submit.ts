@@ -4,7 +4,7 @@ import { ShowcasePage } from '../showcase/showcase';
 import { mockedCard } from '../../data/qard';
 import { QardsDatabase, QardsStorage } from 'qards-lib';
 import { SessionService } from '../../data/session';
-//import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import firebase from 'firebase'
 
 @Component({
@@ -13,6 +13,7 @@ import firebase from 'firebase'
 export class SubmitPage {
   public title = '';
   public readonly image: string | null;
+  private readonly didLeave: () => void;
 
   constructor(
     private readonly viewCtrl: ViewController,
@@ -21,11 +22,11 @@ export class SubmitPage {
     private readonly session: SessionService,
     private readonly loadingCtrl: LoadingController,
     private readonly storage: QardsStorage,
-    //private readonly geolocation: Geolocation,
+    private readonly geolocation: Geolocation,
     navParams: NavParams
   ) {
     this.image = navParams.get('image') || null;
-    this.geolocation
+    this.didLeave = navParams.get('didLeave') || (() => void 0);
   }
 
   abort() {
@@ -49,7 +50,7 @@ export class SubmitPage {
         this.image,
         Date.now().toString()
       );
-      //const loaction = await this.geolocation.getCurrentPosition();
+      const location = await this.geolocation.getCurrentPosition();
       const imageUrl = await this.storage.getImageUrl(uploadResult.metadata.name)
       const uploadCard = {
         comments: [],
@@ -59,8 +60,8 @@ export class SubmitPage {
         imageId,
         imageUrl,
         location: {
-          _lat: 10,
-          _long: 48
+          _lat: location.coords.latitude,
+          _long: location.coords.longitude
         },
         score: 9000 + 1,
         tags: [],
@@ -69,9 +70,8 @@ export class SubmitPage {
       await this.database.createCard(uploadCard);
       await this.viewCtrl.dismiss();
       const result = await this.database.getRandomCard()
-      console.log(result)
-      const card = result.docs[0].data()
-      this.modalCtrl.create(ShowcasePage, { card }).present();
+      const card = { id: result.id, ...result.data() }
+      this.modalCtrl.create(ShowcasePage, { card, didLeave: () => this.didLeave() }).present();
     } catch (error) {
       console.log(error);
     } finally {

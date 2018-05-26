@@ -27,7 +27,7 @@ export class HomePage {
   ionViewWillEnter() {
     this.database.getOwnCards(this.session.uid$.value)
       .then((cards: firebase.firestore.QuerySnapshot) => {
-        this.collection = cards.docs.map(doc => doc.data() as Card)
+        this.collection = cards.docs.map(doc => ({ id: doc.id, ...doc.data() } as any as Card))
         this.changeDetection.markForCheck();
       })
   }
@@ -43,13 +43,13 @@ export class HomePage {
         allowEdit: false,
         correctOrientation: true
       });
-      this.modalCtrl.create(SubmitPage, { image }).present();
+      this.modalCtrl.create(SubmitPage, { image, didLeave: () => this.ionViewWillEnter() }).present();
     } catch (error) {
-      this.modalCtrl.create(SubmitPage).present();
+      this.modalCtrl.create(SubmitPage, { didLeave: () => this.ionViewWillEnter()}).present();
     }
   }
 
   showCard(card: Card) {
-    this.modalCtrl.create(ShowcasePage, { card }).present();
+    this.modalCtrl.create(ShowcasePage, { card, didLeave: () => this.ionViewWillEnter() }).present();
   }
 }
